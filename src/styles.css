@@ -1,0 +1,70 @@
+.container {
+    min-height: 100vh; /* Alterado de height para min-height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(#121212, #212b46);
+}
+
+.title {
+    font-size: 3rem; /* Usar rem em vez de px é uma boa prática para responsividade */
+    color: #FFF;
+    animation: flipTitle 1s ease-in-out;
+}
+
+@keyframes flipTitle {
+    from {
+        transform: rotateX(90deg);
+    }
+    to {
+        transform: rotateX(0deg);
+    }
+}
+
+.containerInput {
+    display: flex;
+    margin-top: 20px;
+}
+
+.containerInput input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.buttonSearch {
+    background: #FFF;
+    border: none;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonSearch:hover {
+    background: #ccc;
+}
+
+.main {
+    margin-top: 20px;
+    text-align: left;
+    background: #FFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.main h2 {
+    margin: 0 0 10px;
+}
+
+.main span {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
