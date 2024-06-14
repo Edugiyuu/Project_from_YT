@@ -1,5 +1,5 @@
 .container {
-    min-height: 100vh; /* Alterado de height para min-height */
+    min-height: 100vh; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,7 +8,8 @@
 }
 
 .title {
-    font-size: 3rem; /* Usar rem em vez de px é uma boa prática para responsividade */
+    margin-top: 20px;
+    font-size: 3rem; 
     color: #FFF;
     animation: flipTitle 1s ease-in-out;
 }
@@ -22,33 +23,71 @@
     }
 }
 
-.containerInput {
+.containerInput,
+.infoInput,
+.CreateEDelete {
     display: flex;
     margin-top: 20px;
+    align-items: center;
+    justify-content: center;
 }
 
-.containerInput input {
+.infoInput {
+    flex-direction: column;
+}
+
+.containerInput input,
+.infoInput input,
+.CreateEDelete input {
     padding: 10px;
     border: none;
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px;
     outline: none;
     font-size: 1rem;
+    margin: 10px;
 }
 
-.buttonSearch {
+.CreateEDelete input {
+    background: #FFF;
+    width: 250px;
+    height: 40px;
+   
+    margin-top: 10px; /* Alinhar verticalmente com os botões */
+    margin-left: 10px; /* Espaçamento entre o input e o botão */
+}
+
+.buttonSearch,
+.buttonCreate {
     background: #FFF;
     border: none;
     padding: 10px;
-    border-radius: 0 5px 5px 0;
+    border-radius: 5px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.buttonSearch:hover {
+.buttonSearch:hover,
+.buttonCreate:hover {
     background: #ccc;
 }
+
+.CreateEDelete button {
+    margin: 10px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.CreateEDelete button:hover {
+    box-shadow: 4px 10px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+}
+
 
 .main {
     margin-top: 20px;
