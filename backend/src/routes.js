@@ -64,9 +64,18 @@ router.put('/ceps/:id', (req, res) => {
   res.send();
 });
 
-router.delete('/ceps/:id', (req, res) => {
-  const userId = req.params.id;
-  res.send(`Delete user ${userId}`);
-});
+router.delete('/ceps/:cep', (req, res) => {
+  const userCep = req.params.cep;
+  const posiçãoDoCep = ceps.findIndex(cep => cep.cep === userCep);
 
+  console.log(ceps[posiçãoDoCep]);
+  console.log(posiçãoDoCep);
+
+  if (posiçãoDoCep === -1) {
+    res.status(404).send('Esse CEP não existe');
+  } else {
+    ceps.splice(posiçãoDoCep, 1);
+    res.json({ message: 'CEP deletado com sucesso' });
+  }
+});
 module.exports = router;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 import { FiSearch } from "react-icons/fi";
 import { GrAddCircle } from "react-icons/gr";
@@ -14,6 +14,8 @@ const [novoNome,setNovoNome] = useState('')
 const [novaIdade,setNovaIdade] = useState('')
 const [novoEmail,setNovoEmail] = useState('')
 const [novaCidade,setNovaCidade] = useState('')
+
+const [deletar,setDeletar] = useState('')
 const [cep, setCep] = useState({})
 
  async function handleSearch() {
@@ -35,6 +37,20 @@ const [cep, setCep] = useState({})
   }
 }
 
+async function handleDelete() {
+  if(deletar === ''){
+    alert('Digite um CEP para deletar');
+    return;
+  }
+  try {
+    const response = await api.delete(`${deletar}`);
+   console.log(response.data);
+   setCep({})
+   setDeletar('')
+  } catch (error) {
+    alert("Erro ao deletar");
+  }
+}
 async function handleCreateCep() {
   if(novoCep === '' || novoNome === '' || novaIdade === '' || novoEmail === '' || novaCidade === ""){
     alert('Algum campo está vazio');
@@ -97,7 +113,7 @@ async function handleCreateCep() {
       <input type="number"
         placeholder="Idade aqui"
         value={novaIdade}
-        onChange={event => setNovaIdade(event.target.value)}
+        onChange={event => setNovaIdade(Number(event.target.value))}
         ></input>
 
         <input type="email"
@@ -117,14 +133,14 @@ async function handleCreateCep() {
       <button className="buttonCreate" onClick={handleCreateCep}>
         <GrAddCircle size={50} color="#091"/>
         </button>
-        <button className="buttonCreate" onClick={handleCreateCep}>
+        <button className="buttonCreate" onClick={handleDelete}>
         <FaRegTrashAlt size={50} color="#901"/>
         </button>
         
         <input type="text"
         placeholder="Coloque o cep que deseja deletar"
-        value={novaCidade}
-        onChange={event => setNovaCidade(event.target.value)}
+        value={deletar}
+        onChange={event => setDeletar(event.target.value)}
        
         ></input>
       </div>
